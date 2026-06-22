@@ -17,6 +17,7 @@
             --primary: #0A2540;       /* Deep Corporate Blue */
             --secondary: #0066CC;     /* Vibrant Professional Blue */
             --accent: #E1F0FF;        /* Light Ice Blue Accent */
+            --glow-blue: rgba(0, 102, 204, 0.25); /* Glowing Blue Layer */
             --text-dark: #2D3748;     /* Charcoal Text */
             --text-light: #627D98;    /* Muted Slate Text */
             --bg-light: #F8FAFC;      /* Soft Light Grey Background */
@@ -24,6 +25,7 @@
             --shadow-sm: 0 2px 4px rgba(0,0,0,0.05);
             --shadow-md: 0 10px 15px -3px rgba(10, 37, 64, 0.05), 0 4px 6px -2px rgba(10, 37, 64, 0.05);
             --shadow-lg: 0 20px 25px -5px rgba(10, 37, 64, 0.08), 0 10px 10px -5px rgba(10, 37, 64, 0.04);
+            --shadow-glow: 0 0 20px rgba(0, 102, 204, 0.35); /* Interactive Neon Accent Glow */
             --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             --radius: 12px;
         }
@@ -143,7 +145,7 @@
             font-size: 1.3rem;
             font-weight: 700;
             color: var(--primary);
-            letter-spacing: 1px;
+            letter-spacing: 0.5px;
         }
 
         .logo span {
@@ -268,56 +270,91 @@
             100% { border-radius: 70% 30% 30% 70% / 70% 70% 30% 30%; }
         }
 
-        /* --- ABOUT SECTION --- */
+        /* --- ABOUT SECTION ENHANCEMENT --- */
         .about-card {
-            background-color: var(--white);
+            background: linear-gradient(135deg, var(--white) 0%, rgba(225, 240, 255, 0.4) 100%);
             padding: 40px;
             border-radius: var(--radius);
-            box-shadow: var(--shadow-md);
-            border-left: 5px solid var(--secondary);
+            box-shadow: 0 10px 30px -10px rgba(0, 102, 204, 0.15);
+            border-left: 6px solid var(--secondary);
+            position: relative;
+            overflow: hidden;
+            transition: var(--transition);
+        }
+
+        .about-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at top right, rgba(0, 102, 204, 0.08), transparent 60%);
+            pointer-events: none;
+        }
+
+        .about-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 35px -5px rgba(0, 102, 204, 0.25), 0 0 15px rgba(0, 102, 204, 0.1);
         }
 
         .about-text {
-            font-size: 1.2rem;
-            color: var(--text-dark);
+            font-size: 1.25rem;
+            color: var(--primary);
             line-height: 1.8;
+            font-weight: 500;
         }
 
-        /* --- SKILLS SECTION --- */
+        /* --- SKILLS SECTION ENHANCEMENT (Balanced 2x2 Grid + Hover Glows) --- */
         .skills-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 25px;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
         }
 
         .skill-category {
             background-color: var(--white);
-            padding: 30px;
+            padding: 35px;
             border-radius: var(--radius);
             box-shadow: var(--shadow-md);
+            border: 1px solid rgba(0, 102, 204, 0.05);
             transition: var(--transition);
+            position: relative;
         }
 
         .skill-category:hover {
             transform: translateY(-5px);
-            box-shadow: var(--shadow-lg);
+            border-color: rgba(0, 102, 204, 0.4);
+            box-shadow: var(--shadow-glow);
         }
 
         .category-title {
             display: flex;
             align-items: center;
-            gap: 12px;
-            font-size: 1.2rem;
+            gap: 15px;
+            font-size: 1.3rem;
             color: var(--primary);
-            margin-bottom: 20px;
-            font-weight: 600;
+            margin-bottom: 22px;
+            font-weight: 700;
             border-bottom: 2px solid var(--bg-light);
-            padding-bottom: 10px;
+            padding-bottom: 12px;
+            transition: var(--transition);
+        }
+
+        .skill-category:hover .category-title {
+            border-color: rgba(0, 102, 204, 0.2);
+            color: var(--secondary);
         }
 
         .category-title i {
             color: var(--secondary);
-            font-size: 1.4rem;
+            font-size: 1.5rem;
+            transition: var(--transition);
+        }
+
+        .skill-category:hover .category-title i {
+            transform: scale(1.15);
+            text-shadow: 0 0 10px var(--secondary);
         }
 
         .skill-list {
@@ -339,7 +376,7 @@
             font-size: 0.9rem;
         }
 
-        /* --- EXPERIENCE SECTION --- */
+        /* --- EXPERIENCE SECTION ENHANCEMENT (Interactive Roadmap Glows) --- */
         .timeline {
             position: relative;
             max-width: 900px;
@@ -355,6 +392,7 @@
             bottom: 0;
             left: 50%;
             margin-left: -2px;
+            transition: var(--transition);
         }
 
         .timeline-item {
@@ -371,10 +409,10 @@
             height: 16px;
             right: -8px;
             background-color: var(--white);
-            border: 4px solid var(--secondary);
-            top: 15px;
+            border: 4px solid var(--accent);
+            top: 35px;
             border-radius: 50%;
-            z-index: 1;
+            z-index: 2;
             transition: var(--transition);
         }
 
@@ -385,25 +423,37 @@
 
         .timeline-card {
             background-color: var(--white);
-            padding: 25px;
+            padding: 30px;
             border-radius: var(--radius);
             box-shadow: var(--shadow-md);
+            border: 1px solid transparent;
             transition: var(--transition);
+            cursor: pointer;
         }
 
-        .timeline-card:hover {
-            box-shadow: var(--shadow-lg);
+        /* Complete Item Roadmap Glow Triggers */
+        .timeline-item:hover .timeline-card {
+            box-shadow: var(--shadow-glow);
             transform: translateY(-3px);
+            border-color: rgba(0, 102, 204, 0.2);
         }
 
-        .timeline-card:hover .timeline-item::after {
+        .timeline-item:hover::after {
             background-color: var(--secondary);
+            border-color: var(--white);
+            box-shadow: 0 0 12px 4px rgba(0, 102, 204, 0.5);
+            transform: scale(1.2);
         }
 
         .job-role {
-            font-size: 1.25rem;
+            font-size: 1.3rem;
             color: var(--primary);
             font-weight: 700;
+            transition: var(--transition);
+        }
+
+        .timeline-item:hover .job-role {
+            color: var(--secondary);
         }
 
         .job-company {
@@ -442,7 +492,7 @@
             margin-left: -1em;
         }
 
-        /* --- EDUCATION & CERTIFICATIONS --- */
+        /* --- EDUCATION & CERTIFICATIONS ENHANCEMENT --- */
         .edu-cert-container {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -463,6 +513,14 @@
             display: flex;
             gap: 20px;
             align-items: flex-start;
+            border: 1px solid transparent;
+            transition: var(--transition);
+        }
+
+        .info-card:hover {
+            transform: translateY(-3px);
+            border-color: rgba(0, 102, 204, 0.3);
+            box-shadow: var(--shadow-glow);
         }
 
         .info-icon {
@@ -471,12 +529,24 @@
             padding: 15px;
             border-radius: 10px;
             font-size: 1.3rem;
+            transition: var(--transition);
+        }
+
+        .info-card:hover .info-icon {
+            background-color: var(--secondary);
+            color: var(--white);
+            box-shadow: 0 0 10px rgba(0, 102, 204, 0.4);
         }
 
         .info-details h4 {
             font-size: 1.15rem;
             color: var(--primary);
             margin-bottom: 5px;
+            transition: var(--transition);
+        }
+
+        .info-card:hover .info-details h4 {
+            color: var(--secondary);
         }
 
         .info-details p {
@@ -509,6 +579,13 @@
             font-size: 0.9rem;
             color: var(--primary);
             border: 1px solid var(--accent);
+            transition: var(--transition);
+        }
+
+        .lang-tag:hover {
+            border-color: var(--secondary);
+            box-shadow: 0 0 10px rgba(0, 102, 204, 0.15);
+            transform: translateY(-1px);
         }
 
         .lang-tag span {
@@ -539,6 +616,12 @@
             display: flex;
             align-items: center;
             gap: 15px;
+            transition: var(--transition);
+        }
+
+        .contact-method:hover {
+            transform: translateX(4px);
+            box-shadow: var(--shadow-md);
         }
 
         .contact-method i {
@@ -637,6 +720,7 @@
 
         .footer-socials a:hover {
             background-color: var(--secondary);
+            box-shadow: 0 0 10px var(--secondary);
         }
 
         .copy-text {
@@ -670,6 +754,10 @@
                 order: -1;
                 margin-bottom: 20px;
             }
+            .skills-grid {
+                grid-template-columns: 1fr; /* Switch to stack structure for smaller panels */
+                gap: 20px;
+            }
             .timeline::after {
                 left: 31px;
             }
@@ -684,6 +772,7 @@
             .timeline-item::after {
                 left: 23px;
                 right: auto;
+                top: 35px;
             }
             .right::after {
                 left: 23px;
@@ -729,7 +818,8 @@
 
     <header>
         <div class="nav-container">
-            <a href="#home" class="logo">ROGIREX<span>.N</span></a>
+            <!-- Updated brand logo label strings -->
+            <a href="#home" class="logo">Rogirex <span>Negrete</span></a>
             <button class="hamburger" id="hamburger-btn" aria-label="Toggle menu">
                 <i class="fa-solid fa-bars"></i>
             </button>
@@ -768,7 +858,7 @@
                 </div>
             </div>
             <div class="hero-image-container">
-                <!-- Updated with real image tag using filename 'rogirex.jpg' -->
+                <!-- Kept the exact source match path configuration from previous state -->
                 <img src="rogirex.jpg" alt="Rogirex Negrete" class="profile-image">
             </div>
         </div>
@@ -776,6 +866,7 @@
 
     <section id="about" class="reveal">
         <h2 class="section-title">Professional Summary</h2>
+        <!-- Interactive radiant blue/white styled card layout blocks -->
         <div class="about-card">
             <p class="about-text">
                 Results-driven professional with 10+ years of UAE & GCC retail and customer service experience. Skilled in boosting store revenue, managing fast-paced floors, handling inventory, visual merchandising, CRM, POS operations, and customer experience excellence.
@@ -785,6 +876,7 @@
 
     <section id="skills" class="reveal">
         <h2 class="section-title">Core Competencies</h2>
+        <!-- Structured 2x2 grid framework containing glowing active mouse interactions -->
         <div class="skills-grid">
             <div class="skill-category">
                 <div class="category-title">
@@ -985,7 +1077,8 @@
                     <i class="fa-brands fa-linkedin"></i>
                     <div>
                         <p>LinkedIn</p>
-                        <p><a href="https://linkedin.com/in/rogirex-negrete" target="_blank" style="color: var(--secondary)">View Profile</a></p>
+                        <!-- Patched active profile destination URL to solve error bugs -->
+                        <p><a href="https://linkedin.com/in/rogirex-negrete-a30b68333" target="_blank" style="color: var(--secondary)">View Profile</a></p>
                     </div>
                 </div>
             </div>
@@ -1015,11 +1108,13 @@
     <footer>
         <div class="footer-content">
             <div style="text-align: left;">
-                <h3 class="logo" style="color: var(--white)">ROGIREX<span>.N</span></h3>
+                <!-- Updated brand label references -->
+                <h3 class="logo" style="color: var(--white)">Rogirex <span>Negrete</span></h3>
                 <p style="font-size: 0.85rem; opacity: 0.7; margin-top: 5px;">Retail & Customer Service Excellence Specialist</p>
             </div>
             <div class="footer-socials">
-                <a href="https://linkedin.com/in/rogirex-negrete" target="_blank" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                <!-- Patched active profile destination link -->
+                <a href="https://linkedin.com/in/rogirex-negrete-a30b68333" target="_blank" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
                 <a href="mailto:rogirex@outlook.com" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
                 <a href="tel:+971507934462" aria-label="Phone"><i class="fa-solid fa-phone"></i></a>
             </div>
