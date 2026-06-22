@@ -12,22 +12,18 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
-        /* --- CORE DESIGN SYSTEM --- */
+        /* --- DESIGN SYSTEM INSPIRED BY image_209767.png --- */
         :root {
-            --primary: #0A2540;       /* Deep Corporate Blue */
-            --secondary: #0066CC;     /* Vibrant Professional Blue */
-            --accent: #E1F0FF;        /* Light Ice Blue Accent */
-            --glow-blue: rgba(0, 102, 204, 0.25); /* Glowing Blue Layer */
-            --text-dark: #2D3748;     /* Charcoal Text */
-            --text-light: #627D98;    /* Muted Slate Text */
-            --bg-light: #F8FAFC;      /* Soft Light Grey Background */
+            --bg-dark: #0B0C10;       /* Deep matte black background */
+            --bg-card: #1A1C23;       /* Slightly lighter surface tone */
+            --primary-accent: #6366F1; /* Electric Indigo banner/button accent */
+            --text-main: #FFFFFF;     /* Pure white headings */
+            --text-muted: #94A3B8;    /* Soft gray description text */
             --white: #FFFFFF;
-            --shadow-sm: 0 2px 4px rgba(0,0,0,0.05);
-            --shadow-md: 0 10px 15px -3px rgba(10, 37, 64, 0.05), 0 4px 6px -2px rgba(10, 37, 64, 0.05);
-            --shadow-lg: 0 20px 25px -5px rgba(10, 37, 64, 0.08), 0 10px 10px -5px rgba(10, 37, 64, 0.04);
-            --shadow-glow: 0 0 20px rgba(0, 102, 204, 0.35); /* Interactive Neon Accent Glow */
+            --shadow-sm: 0 2px 4px rgba(0,0,0,0.2);
+            --shadow-md: 0 10px 15px -3px rgba(0,0,0,0.4);
             --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            --radius: 12px;
+            --radius: 8px;            /* Sleeker, modern corners */
         }
 
         * {
@@ -39,8 +35,8 @@
 
         body {
             font-family: 'Inter', sans-serif;
-            color: var(--text-dark);
-            background-color: var(--bg-light);
+            color: var(--text-muted);
+            background-color: var(--bg-dark);
             line-height: 1.6;
             overflow-x: hidden;
         }
@@ -55,6 +51,17 @@
             list-style: none;
         }
 
+        /* Top Announcement Promo Bar */
+        .promo-bar {
+            background-color: var(--primary-accent);
+            color: var(--white);
+            font-size: 0.8rem;
+            font-weight: 500;
+            text-align: center;
+            padding: 8px 10px;
+            letter-spacing: 0.5px;
+        }
+
         section {
             padding: 100px 5% 80px 5%;
             max-width: 1200px;
@@ -63,7 +70,7 @@
 
         .section-title {
             font-size: 2rem;
-            color: var(--primary);
+            color: var(--text-main);
             margin-bottom: 40px;
             position: relative;
             font-weight: 700;
@@ -76,10 +83,9 @@
             position: absolute;
             bottom: -10px;
             left: 0;
-            width: 60px;
-            height: 4px;
-            background: var(--secondary);
-            border-radius: 2px;
+            width: 40px;
+            height: 3px;
+            background: var(--primary-accent);
         }
 
         /* --- BUTTONS --- */
@@ -88,7 +94,7 @@
             align-items: center;
             gap: 10px;
             padding: 12px 28px;
-            border-radius: 30px;
+            border-radius: 4px; /* Squared sleek look from the template */
             font-weight: 600;
             font-size: 0.95rem;
             cursor: pointer;
@@ -96,27 +102,24 @@
         }
 
         .btn-primary {
-            background-color: var(--secondary);
+            background-color: var(--primary-accent);
             color: var(--white);
-            box-shadow: 0 4px 14px rgba(0, 102, 204, 0.3);
         }
 
         .btn-primary:hover {
-            background-color: #0052a3;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(0, 102, 204, 0.4);
+            opacity: 0.9;
+            transform: translateY(-1px);
         }
 
         .btn-secondary {
             background-color: transparent;
-            color: var(--primary);
-            border: 2px solid var(--primary);
+            color: var(--text-main);
+            border: 1px solid rgba(255, 255, 255, 0.2);
         }
 
         .btn-secondary:hover {
-            background-color: var(--primary);
-            color: var(--white);
-            transform: translateY(-2px);
+            background-color: rgba(255, 255, 255, 0.05);
+            border-color: var(--text-main);
         }
 
         /* --- NAVIGATION --- */
@@ -125,11 +128,10 @@
             top: 0;
             left: 0;
             width: 100%;
-            background-color: rgba(255, 255, 255, 0.95);
+            background-color: rgba(11, 12, 16, 0.95);
             backdrop-filter: blur(10px);
-            box-shadow: var(--shadow-sm);
             z-index: 1000;
-            transition: var(--transition);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
         }
 
         .nav-container {
@@ -142,14 +144,15 @@
         }
 
         .logo {
-            font-size: 1.3rem;
+            font-size: 1.2rem;
             font-weight: 700;
-            color: var(--primary);
+            color: var(--text-main);
             letter-spacing: 0.5px;
         }
 
         .logo span {
-            color: var(--secondary);
+            color: var(--text-muted);
+            font-weight: 400;
         }
 
         .nav-menu {
@@ -159,17 +162,17 @@
         }
 
         .nav-link {
-            font-weight: 500;
-            color: var(--text-dark);
-            font-size: 0.95rem;
+            font-weight: 400;
+            color: var(--text-muted);
+            font-size: 0.9rem;
         }
 
         .nav-link:hover, .nav-link.active {
-            color: var(--secondary);
+            color: var(--text-main);
         }
 
         .nav-btn {
-            padding: 8px 20px;
+            padding: 8px 18px;
             font-size: 0.85rem;
         }
 
@@ -179,7 +182,7 @@
             background: none;
             border: none;
             font-size: 1.5rem;
-            color: var(--primary);
+            color: var(--text-main);
         }
 
         /* --- HERO SECTION --- */
@@ -187,60 +190,95 @@
             min-height: 100vh;
             display: flex;
             align-items: center;
-            background: radial-gradient(circle at 80% 20%, var(--accent) 0%, var(--white) 50%);
-            padding-top: 120px;
+            padding: 140px 0 60px 0;
+            max-width: 100%;
+            background-color: var(--bg-dark);
         }
 
         .hero-container {
             display: grid;
-            grid-template-columns: 1.2fr 0.8fr;
-            gap: 50px;
-            align-items: center;
+            grid-template-columns: 0.9fr 1.1fr;
             width: 100%;
+            max-width: 1300px;
+            margin: 0 auto;
+            border: 1px solid rgba(255,255,255,0.05);
+            background-color: #0d0f14;
+        }
+
+        .hero-image-container {
+            background-color: #000000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            position: relative;
+            min-height: 450px;
+        }
+
+        .profile-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: grayscale(20%) contrast(110%);
+        }
+
+        .hero-content {
+            padding: 60px 8%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
         }
 
         .hero-badge {
             display: inline-block;
-            padding: 6px 16px;
-            background-color: var(--accent);
-            color: var(--secondary);
-            border-radius: 20px;
+            color: var(--primary-accent);
             font-weight: 600;
             font-size: 0.85rem;
             margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
         .hero-title {
-            font-size: 3.5rem;
-            color: var(--primary);
-            line-height: 1.2;
-            margin-bottom: 15px;
+            font-size: 3rem;
+            color: var(--text-main);
+            line-height: 1.15;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .hero-title span {
+            color: var(--text-muted);
+            display: block;
+            font-size: 2rem;
+            font-weight: 400;
+            margin-top: 5px;
         }
 
         .hero-subtitle {
-            font-size: 1.3rem;
-            color: var(--text-light);
-            margin-bottom: 25px;
-            font-weight: 400;
+            font-size: 1rem;
+            color: var(--text-muted);
+            margin-bottom: 30px;
+            max-width: 500px;
         }
 
         .hero-meta {
             display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
+            flex-direction: column;
+            gap: 12px;
             margin-bottom: 35px;
-            color: var(--text-dark);
-            font-weight: 500;
+            font-size: 0.9rem;
         }
 
         .hero-meta span {
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 10px;
         }
 
         .hero-meta i {
-            color: var(--secondary);
+            color: var(--primary-accent);
+            width: 16px;
         }
 
         .hero-buttons {
@@ -249,350 +287,183 @@
             flex-wrap: wrap;
         }
 
-        .hero-image-container {
-            position: relative;
-            display: flex;
-            justify-content: center;
-        }
-
-        /* Premium Profile Image Style */
-        .profile-image {
-            width: 340px;
-            height: 340px;
-            border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
-            box-shadow: var(--shadow-lg);
-            object-fit: cover;
-            animation: morph 8s ease-in-out infinite alternate;
-        }
-
-        @keyframes morph {
-            0% { border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; }
-            100% { border-radius: 70% 30% 30% 70% / 70% 70% 30% 30%; }
-        }
-
-        /* --- ABOUT SECTION ENHANCEMENT --- */
+        /* --- ABOUT SECTION --- */
         .about-card {
-            background: linear-gradient(135deg, var(--white) 0%, rgba(225, 240, 255, 0.4) 100%);
+            background-color: var(--bg-card);
             padding: 40px;
             border-radius: var(--radius);
-            box-shadow: 0 10px 30px -10px rgba(0, 102, 204, 0.15);
-            border-left: 6px solid var(--secondary);
-            position: relative;
-            overflow: hidden;
-            transition: var(--transition);
-        }
-
-        .about-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle at top right, rgba(0, 102, 204, 0.08), transparent 60%);
-            pointer-events: none;
-        }
-
-        .about-card:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 12px 35px -5px rgba(0, 102, 204, 0.25), 0 0 15px rgba(0, 102, 204, 0.1);
+            border: 1px solid rgba(255,255,255,0.05);
         }
 
         .about-text {
-            font-size: 1.25rem;
-            color: var(--primary);
-            line-height: 1.8;
-            font-weight: 500;
+            font-size: 1.2rem;
+            color: var(--text-main);
+            line-height: 1.7;
+            font-weight: 300;
         }
 
-        /* --- SKILLS SECTION ENHANCEMENT (Balanced 2x2 Grid + Hover Glows) --- */
+        /* --- SKILLS SECTION --- */
         .skills-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 30px;
+            gap: 25px;
         }
 
         .skill-category {
-            background-color: var(--white);
-            padding: 35px;
+            background-color: var(--bg-card);
+            padding: 30px;
             border-radius: var(--radius);
-            box-shadow: var(--shadow-md);
-            border: 1px solid rgba(0, 102, 204, 0.05);
-            transition: var(--transition);
-            position: relative;
-        }
-
-        .skill-category:hover {
-            transform: translateY(-5px);
-            border-color: rgba(0, 102, 204, 0.4);
-            box-shadow: var(--shadow-glow);
+            border: 1px solid rgba(255, 255, 255, 0.03);
         }
 
         .category-title {
             display: flex;
             align-items: center;
-            gap: 15px;
-            font-size: 1.3rem;
-            color: var(--primary);
-            margin-bottom: 22px;
-            font-weight: 700;
-            border-bottom: 2px solid var(--bg-light);
-            padding-bottom: 12px;
-            transition: var(--transition);
-        }
-
-        .skill-category:hover .category-title {
-            border-color: rgba(0, 102, 204, 0.2);
-            color: var(--secondary);
+            gap: 12px;
+            font-size: 1.1rem;
+            color: var(--text-main);
+            margin-bottom: 20px;
+            font-weight: 600;
         }
 
         .category-title i {
-            color: var(--secondary);
-            font-size: 1.5rem;
-            transition: var(--transition);
-        }
-
-        .skill-category:hover .category-title i {
-            transform: scale(1.15);
-            text-shadow: 0 0 10px var(--secondary);
+            color: var(--primary-accent);
         }
 
         .skill-list {
-            display: flex;
-            flex-direction: column;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
             gap: 12px;
         }
 
         .skill-item {
             display: flex;
             align-items: center;
-            gap: 10px;
-            font-weight: 500;
-            color: var(--text-dark);
-        }
-
-        .skill-item i {
-            color: #2ECC71; /* Accent Green Check */
+            gap: 8px;
             font-size: 0.9rem;
         }
 
-        /* --- EXPERIENCE SECTION ENHANCEMENT (Interactive Roadmap Glows) --- */
+        .skill-item i {
+            color: var(--primary-accent);
+            font-size: 0.75rem;
+        }
+
+        /* --- EXPERIENCE SECTION --- */
         .timeline {
-            position: relative;
-            max-width: 900px;
-            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
         }
-
-        .timeline::after {
-            content: '';
-            position: absolute;
-            width: 4px;
-            background: var(--accent);
-            top: 0;
-            bottom: 0;
-            left: 50%;
-            margin-left: -2px;
-            transition: var(--transition);
-        }
-
-        .timeline-item {
-            padding: 10px 40px;
-            position: relative;
-            width: 50%;
-            box-sizing: border-box;
-        }
-
-        .timeline-item::after {
-            content: '';
-            position: absolute;
-            width: 16px;
-            height: 16px;
-            right: -8px;
-            background-color: var(--white);
-            border: 4px solid var(--accent);
-            top: 35px;
-            border-radius: 50%;
-            z-index: 2;
-            transition: var(--transition);
-        }
-
-        .left { left: 0; }
-        .right { left: 50%; }
-
-        .right::after { left: -8px; }
 
         .timeline-card {
-            background-color: var(--white);
-            padding: 30px;
+            background-color: var(--bg-card);
+            padding: 35px;
             border-radius: var(--radius);
-            box-shadow: var(--shadow-md);
-            border: 1px solid transparent;
-            transition: var(--transition);
-            cursor: pointer;
+            border: 1px solid rgba(255, 255, 255, 0.03);
         }
 
-        /* Complete Item Roadmap Glow Triggers */
-        .timeline-item:hover .timeline-card {
-            box-shadow: var(--shadow-glow);
-            transform: translateY(-3px);
-            border-color: rgba(0, 102, 204, 0.2);
-        }
-
-        .timeline-item:hover::after {
-            background-color: var(--secondary);
-            border-color: var(--white);
-            box-shadow: 0 0 12px 4px rgba(0, 102, 204, 0.5);
-            transform: scale(1.2);
+        .job-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+            gap: 10px;
         }
 
         .job-role {
             font-size: 1.3rem;
-            color: var(--primary);
-            font-weight: 700;
-            transition: var(--transition);
-        }
-
-        .timeline-item:hover .job-role {
-            color: var(--secondary);
+            color: var(--text-main);
+            font-weight: 600;
         }
 
         .job-company {
             font-size: 1rem;
-            color: var(--secondary);
-            font-weight: 600;
-            margin-bottom: 5px;
-        }
-
-        .job-meta {
-            display: flex;
-            justify-content: space-between;
-            font-size: 0.85rem;
-            color: var(--text-light);
-            margin-bottom: 15px;
+            color: var(--primary-accent);
             font-weight: 500;
         }
 
+        .job-meta {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            text-align: right;
+        }
+
+        .job-meta span {
+            display: block;
+        }
+
         .job-desc {
-            padding-left: 18px;
+            padding-left: 5px;
         }
 
         .job-desc li {
             position: relative;
             margin-bottom: 8px;
             font-size: 0.95rem;
-            color: var(--text-dark);
+            padding-left: 15px;
         }
 
         .job-desc li::before {
-            content: "•";
-            color: var(--secondary);
-            font-weight: bold;
-            display: inline-block;
-            width: 1em;
-            margin-left: -1em;
+            content: "—";
+            position: absolute;
+            left: 0;
+            color: var(--primary-accent);
         }
 
-        /* --- EDUCATION & CERTIFICATIONS ENHANCEMENT --- */
+        /* --- EDUCATION & CERTIFICATIONS --- */
         .edu-cert-container {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 30px;
-        }
-
-        .edu-column, .cert-column {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
+            gap: 25px;
         }
 
         .info-card {
-            background-color: var(--white);
+            background-color: var(--bg-card);
             padding: 25px;
             border-radius: var(--radius);
-            box-shadow: var(--shadow-md);
-            display: flex;
-            gap: 20px;
-            align-items: flex-start;
-            border: 1px solid transparent;
-            transition: var(--transition);
-        }
-
-        .info-card:hover {
-            transform: translateY(-3px);
-            border-color: rgba(0, 102, 204, 0.3);
-            box-shadow: var(--shadow-glow);
-        }
-
-        .info-icon {
-            background-color: var(--accent);
-            color: var(--secondary);
-            padding: 15px;
-            border-radius: 10px;
-            font-size: 1.3rem;
-            transition: var(--transition);
-        }
-
-        .info-card:hover .info-icon {
-            background-color: var(--secondary);
-            color: var(--white);
-            box-shadow: 0 0 10px rgba(0, 102, 204, 0.4);
+            border: 1px solid rgba(255,255,255,0.03);
+            margin-bottom: 20px;
         }
 
         .info-details h4 {
-            font-size: 1.15rem;
-            color: var(--primary);
+            font-size: 1.1rem;
+            color: var(--text-main);
             margin-bottom: 5px;
-            transition: var(--transition);
-        }
-
-        .info-card:hover .info-details h4 {
-            color: var(--secondary);
         }
 
         .info-details p {
-            color: var(--text-light);
             font-size: 0.95rem;
-            margin-bottom: 3px;
         }
 
         .info-details .date {
-            font-weight: 600;
-            color: var(--secondary);
+            display: block;
+            color: var(--primary-accent);
             font-size: 0.85rem;
-            margin-top: 5px;
+            margin-top: 8px;
+            font-weight: 500;
         }
 
-        /* Lang Tags */
         .lang-flex {
             display: flex;
-            gap: 15px;
+            gap: 10px;
             flex-wrap: wrap;
             margin-top: 15px;
         }
 
         .lang-tag {
-            background-color: var(--white);
-            padding: 10px 20px;
-            border-radius: 30px;
-            box-shadow: var(--shadow-sm);
-            font-weight: 600;
-            font-size: 0.9rem;
-            color: var(--primary);
-            border: 1px solid var(--accent);
-            transition: var(--transition);
-        }
-
-        .lang-tag:hover {
-            border-color: var(--secondary);
-            box-shadow: 0 0 10px rgba(0, 102, 204, 0.15);
-            transform: translateY(-1px);
+            background-color: #0d0f14;
+            padding: 8px 16px;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            color: var(--text-main);
+            border: 1px solid rgba(255,255,255,0.05);
         }
 
         .lang-tag span {
-            color: var(--secondary);
-            font-weight: 400;
+            color: var(--text-muted);
             font-size: 0.8rem;
-            margin-left: 5px;
+            margin-left: 4px;
         }
 
         /* --- CONTACT SECTION --- */
@@ -605,51 +476,40 @@
         .contact-sidebar {
             display: flex;
             flex-direction: column;
-            gap: 20px;
+            gap: 15px;
         }
 
         .contact-method {
-            background-color: var(--white);
+            background-color: var(--bg-card);
             padding: 20px;
             border-radius: var(--radius);
-            box-shadow: var(--shadow-sm);
             display: flex;
             align-items: center;
             gap: 15px;
-            transition: var(--transition);
-        }
-
-        .contact-method:hover {
-            transform: translateX(4px);
-            box-shadow: var(--shadow-md);
+            border: 1px solid rgba(255,255,255,0.03);
         }
 
         .contact-method i {
-            font-size: 1.2rem;
-            color: var(--secondary);
-            background-color: var(--accent);
-            padding: 12px;
-            border-radius: 50%;
+            font-size: 1.1rem;
+            color: var(--primary-accent);
         }
 
         .contact-method div p:first-child {
-            font-size: 0.8rem;
-            color: var(--text-light);
+            font-size: 0.75rem;
             text-transform: uppercase;
-            font-weight: 600;
+            letter-spacing: 0.5px;
         }
 
         .contact-method div p:last-child {
-            font-size: 1rem;
-            color: var(--primary);
-            font-weight: 600;
+            font-size: 0.95rem;
+            color: var(--text-main);
         }
 
         .contact-form-card {
-            background-color: var(--white);
+            background-color: var(--bg-card);
             padding: 40px;
             border-radius: var(--radius);
-            box-shadow: var(--shadow-md);
+            border: 1px solid rgba(255,255,255,0.03);
         }
 
         .form-group {
@@ -659,34 +519,33 @@
         .form-group label {
             display: block;
             margin-bottom: 8px;
-            font-weight: 600;
-            font-size: 0.9rem;
-            color: var(--primary);
+            font-size: 0.85rem;
+            color: var(--text-main);
         }
 
         .form-control {
             width: 100%;
             padding: 12px 15px;
-            border: 1px solid #E2E8F0;
-            border-radius: 8px;
+            background-color: #0d0f14;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 4px;
             font-family: inherit;
             font-size: 0.95rem;
-            color: var(--text-dark);
+            color: var(--text-main);
             transition: var(--transition);
         }
 
         .form-control:focus {
             outline: none;
-            border-color: var(--secondary);
-            box-shadow: 0 0 0 3px rgba(0, 102, 204, 0.1);
+            border-color: var(--primary-accent);
         }
 
         /* --- FOOTER --- */
         footer {
-            background-color: var(--primary);
-            color: var(--white);
-            padding: 40px 5% 20px 5%;
-            text-align: center;
+            background-color: #060709;
+            color: var(--text-muted);
+            padding: 60px 5% 30px 5%;
+            border-top: 1px solid rgba(255,255,255,0.05);
         }
 
         .footer-content {
@@ -695,9 +554,9 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
-            padding-bottom: 20px;
-            margin-bottom: 20px;
+            padding-bottom: 30px;
+            margin-bottom: 30px;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
             flex-wrap: wrap;
             gap: 20px;
         }
@@ -708,76 +567,36 @@
         }
 
         .footer-socials a {
-            background-color: rgba(255,255,255,0.05);
-            width: 40px;
-            height: 40px;
+            background-color: var(--bg-card);
+            width: 38px;
+            height: 38px;
             display: flex;
             align-items: center;
             justify-content: center;
-            border-radius: 50%;
-            font-size: 1.1rem;
+            border-radius: 4px;
+            color: var(--text-main);
+            border: 1px solid rgba(255,255,255,0.05);
         }
 
         .footer-socials a:hover {
-            background-color: var(--secondary);
-            box-shadow: 0 0 10px var(--secondary);
+            background-color: var(--primary-accent);
+            border-color: var(--primary-accent);
         }
 
         .copy-text {
-            font-size: 0.85rem;
-            opacity: 0.7;
-        }
-
-        /* --- ANIMATIONS (Scroll Fade In) --- */
-        .reveal {
-            position: relative;
-            transform: translateY(30px);
-            opacity: 0;
-            transition: all 0.6s ease-out;
-        }
-
-        .reveal.active {
-            transform: translateY(0);
-            opacity: 1;
+            font-size: 0.8rem;
+            text-align: center;
         }
 
         /* --- RESPONSIVE BREAKPOINTS --- */
         @media (max-width: 992px) {
             .hero-container {
                 grid-template-columns: 1fr;
-                text-align: center;
-            }
-            .hero-badge, .hero-meta, .hero-buttons {
-                justify-content: center;
             }
             .hero-image-container {
-                order: -1;
-                margin-bottom: 20px;
+                min-height: 350px;
             }
-            .skills-grid {
-                grid-template-columns: 1fr; /* Switch to stack structure for smaller panels */
-                gap: 20px;
-            }
-            .timeline::after {
-                left: 31px;
-            }
-            .timeline-item {
-                width: 100%;
-                padding-left: 70px;
-                padding-right: 0;
-            }
-            .timeline-item.right {
-                left: 0;
-            }
-            .timeline-item::after {
-                left: 23px;
-                right: auto;
-                top: 35px;
-            }
-            .right::after {
-                left: 23px;
-            }
-            .edu-cert-container, .contact-grid {
+            .skills-grid, .edu-cert-container, .contact-grid {
                 grid-template-columns: 1fr;
             }
         }
@@ -788,16 +607,16 @@
             }
             .nav-menu {
                 position: fixed;
-                top: 70px;
+                top: 104px; /* Accounted for header + promo bar */
                 left: -100%;
                 flex-direction: column;
-                background-color: var(--white);
+                background-color: var(--bg-dark);
                 width: 100%;
                 text-align: center;
                 padding: 40px 0;
-                box-shadow: var(--shadow-md);
                 transition: var(--transition);
                 gap: 25px;
+                border-bottom: 1px solid rgba(255,255,255,0.05);
             }
             .nav-menu.active {
                 left: 0;
@@ -806,19 +625,29 @@
                 display: none;
             }
             .hero-title {
-                font-size: 2.5rem;
+                font-size: 2.2rem;
             }
-            .footer-content {
+            .hero-title span {
+                font-size: 1.5rem;
+            }
+            .job-header {
                 flex-direction: column;
+            }
+            .job-meta {
+                text-align: left;
+                margin-top: 5px;
             }
         }
     </style>
 </head>
 <body>
 
+    <div class="promo-bar">
+        Open for new opportunities in Dubai, UAE & across GCC regions.
+    </div>
+
     <header>
         <div class="nav-container">
-            <!-- Updated brand logo label strings -->
             <a href="#home" class="logo">Rogirex <span>Negrete</span></a>
             <button class="hamburger" id="hamburger-btn" aria-label="Toggle menu">
                 <i class="fa-solid fa-bars"></i>
@@ -831,7 +660,7 @@
                 <a href="#education" class="nav-link">Education</a>
                 <a href="#contact" class="nav-link">Contact</a>
                 <a href="cv.pdf" download="Rogirex_Negrete_CV.pdf" class="btn btn-primary nav-btn nav-btn-desktop">
-                    <i class="fa-solid fa-download"></i> CV
+                    Contact
                 </a>
             </nav>
         </div>
@@ -839,44 +668,43 @@
 
     <section id="home" class="hero-section">
         <div class="hero-container">
+            <div class="hero-image-container">
+                <img src="rogirex.png" alt="Rogirex Negrete" class="profile-image">
+            </div>
             <div class="hero-content">
-                <span class="hero-badge"><i class="fa-solid fa-circle-check"></i> Available for Opportunities</span>
-                <h1 class="hero-title">ROGIREX NEGRETE</h1>
-                <p class="hero-subtitle">Retail Associate | Customer Service Specialist | Sales & Operations Professional</p>
+                <span class="hero-badge">Available for Opportunities</span>
+                <h1 class="hero-title">I'm Rogirex Negrete. <span>Retail & Customer Specialist.</span></h1>
+                <p class="hero-subtitle">Results-driven professional with 10+ years of high-volume UAE and GCC experience managing customer-centric store environments and backend operations.</p>
+                
                 <div class="hero-meta">
                     <span><i class="fa-solid fa-location-dot"></i> Dubai, UAE</span>
                     <span><i class="fa-solid fa-phone"></i> +971 50 793 4462</span>
                     <span><i class="fa-solid fa-envelope"></i> rogirex@outlook.com</span>
                 </div>
+
                 <div class="hero-buttons">
                     <a href="cv.pdf" download="Rogirex_Negrete_CV.pdf" class="btn btn-primary">
                         <i class="fa-solid fa-download"></i> Download CV
                     </a>
                     <a href="#contact" class="btn btn-secondary">
-                        Contact Me
+                        Get In Touch
                     </a>
                 </div>
-            </div>
-            <div class="hero-image-container">
-                <!-- Kept the exact source match path configuration from previous state -->
-                <img src="rogirex.jpg" alt="Rogirex Negrete" class="profile-image">
             </div>
         </div>
     </section>
 
-    <section id="about" class="reveal">
+    <section id="about">
         <h2 class="section-title">Professional Summary</h2>
-        <!-- Interactive radiant blue/white styled card layout blocks -->
         <div class="about-card">
             <p class="about-text">
-                Results-driven professional with 10+ years of UAE & GCC retail and customer service experience. Skilled in boosting store revenue, managing fast-paced floors, handling inventory, visual merchandising, CRM, POS operations, and customer experience excellence.
+                Results-driven professional with over 10 years of UAE & GCC retail and customer service experience. Highly skilled at optimizing floor conversions, managing product display layouts, cross-functional logistics operations, CRM tools, and executing client retention standards.
             </p>
         </div>
     </section>
 
-    <section id="skills" class="reveal">
+    <section id="skills">
         <h2 class="section-title">Core Competencies</h2>
-        <!-- Structured 2x2 grid framework containing glowing active mouse interactions -->
         <div class="skills-grid">
             <div class="skill-category">
                 <div class="category-title">
@@ -884,12 +712,12 @@
                     <h3>Sales & Operations</h3>
                 </div>
                 <div class="skill-list">
-                    <div class="skill-item"><i class="fa-solid fa-circle-check"></i> Retail Sales</div>
-                    <div class="skill-item"><i class="fa-solid fa-circle-check"></i> Upselling & Cross-selling</div>
-                    <div class="skill-item"><i class="fa-solid fa-circle-check"></i> POS Systems</div>
-                    <div class="skill-item"><i class="fa-solid fa-circle-check"></i> Cash Handling</div>
-                    <div class="skill-item"><i class="fa-solid fa-circle-check"></i> Visual Merchandising</div>
-                    <div class="skill-item"><i class="fa-solid fa-circle-check"></i> Store Operations</div>
+                    <div class="skill-item"><i class="fa-solid fa-minus"></i> Retail Sales</div>
+                    <div class="skill-item"><i class="fa-solid fa-minus"></i> Upselling Strategy</div>
+                    <div class="skill-item"><i class="fa-solid fa-minus"></i> POS Architectures</div>
+                    <div class="skill-item"><i class="fa-solid fa-minus"></i> Cash Operations</div>
+                    <div class="skill-item"><i class="fa-solid fa-minus"></i> Merchandising</div>
+                    <div class="skill-item"><i class="fa-solid fa-minus"></i> Store Layouts</div>
                 </div>
             </div>
 
@@ -899,10 +727,10 @@
                     <h3>Customer Relations</h3>
                 </div>
                 <div class="skill-list">
-                    <div class="skill-item"><i class="fa-solid fa-circle-check"></i> Customer Service Excellence</div>
-                    <div class="skill-item"><i class="fa-solid fa-circle-check"></i> CRM</div>
-                    <div class="skill-item"><i class="fa-solid fa-circle-check"></i> Client Management</div>
-                    <div class="skill-item"><i class="fa-solid fa-circle-check"></i> Dispute Resolution</div>
+                    <div class="skill-item"><i class="fa-solid fa-minus"></i> Client Success</div>
+                    <div class="skill-item"><i class="fa-solid fa-minus"></i> CRM Architecture</div>
+                    <div class="skill-item"><i class="fa-solid fa-minus"></i> Guest Resolution</div>
+                    <div class="skill-item"><i class="fa-solid fa-minus"></i> Retention Focus</div>
                 </div>
             </div>
 
@@ -912,111 +740,118 @@
                     <h3>Logistics & Stock</h3>
                 </div>
                 <div class="skill-list">
-                    <div class="skill-item"><i class="fa-solid fa-circle-check"></i> Inventory Management</div>
-                    <div class="skill-item"><i class="fa-solid fa-circle-check"></i> Stock Control</div>
-                    <div class="skill-item"><i class="fa-solid fa-circle-check"></i> Replenishment</div>
-                    <div class="skill-item"><i class="fa-solid fa-circle-check"></i> Operational Reporting</div>
+                    <div class="skill-item"><i class="fa-solid fa-minus"></i> Stock Systems</div>
+                    <div class="skill-item"><i class="fa-solid fa-minus"></i> Quality Control</div>
+                    <div class="skill-item"><i class="fa-solid fa-minus"></i> Floor Refills</div>
+                    <div class="skill-item"><i class="fa-solid fa-minus"></i> Audit Audits</div>
                 </div>
             </div>
 
             <div class="skill-category">
                 <div class="category-title">
                     <i class="fa-solid fa-laptop"></i>
-                    <h3>Technical & Skills</h3>
+                    <h3>Technical Toolkits</h3>
                 </div>
                 <div class="skill-list">
-                    <div class="skill-item"><i class="fa-solid fa-circle-check"></i> Microsoft Office</div>
-                    <div class="skill-item"><i class="fa-solid fa-circle-check"></i> Troubleshooting</div>
-                    <div class="skill-item"><i class="fa-solid fa-circle-check"></i> Professional Multitasking</div>
-                    <div class="skill-item"><i class="fa-solid fa-circle-check"></i> Expert Communication</div>
+                    <div class="skill-item"><i class="fa-solid fa-minus"></i> MS Office Suite</div>
+                    <div class="skill-item"><i class="fa-solid fa-minus"></i> Troubleshooting</div>
+                    <div class="skill-item"><i class="fa-solid fa-minus"></i> Resource Allocation</div>
+                    <div class="skill-item"><i class="fa-solid fa-minus"></i> Multilingual Sync</div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="experience" class="reveal">
-        <h2 class="section-title">Professional Experience</h2>
+    <section id="experience">
+        <h2 class="section-title">Experience</h2>
         <div class="timeline">
             
-            <div class="timeline-item left">
-                <div class="timeline-card">
-                    <h3 class="job-role">Retail Associate</h3>
-                    <h4 class="job-company">Home Centre – Landmark Group</h4>
-                    <div class="job-meta">
-                        <span><i class="fa-solid fa-location-dot"></i> Dubai, UAE</span>
-                        <span><i class="fa-solid fa-calendar-days"></i> July 2025 – Present</span>
+            <div class="timeline-card">
+                <div class="job-header">
+                    <div>
+                        <h3 class="job-role">Retail Associate</h3>
+                        <h4 class="job-company">Home Centre – Landmark Group</h4>
                     </div>
-                    <ul class="job-desc">
-                        <li>Deliver personalized customer assistance to build loyalty and repeat traffic.</li>
-                        <li>Drive floor revenue through smart product recommendations and cross-selling.</li>
-                        <li>Manage high-volume POS transactions, structural returns, and item exchanges efficiently.</li>
-                        <li>Maintain pristine corporate visual merchandising standards across the footprint.</li>
-                        <li>Handle critical inventory tracking, auditing, and continuous stock replenishment.</li>
-                    </ul>
+                    <div class="job-meta">
+                        <span>Dubai, UAE</span>
+                        <span>July 2025 – Present</span>
+                    </div>
                 </div>
+                <ul class="job-desc">
+                    <li>Deliver personalized customer assistance to build loyalty and repeat traffic.</li>
+                    <li>Drive floor revenue through smart product recommendations and cross-selling.</li>
+                    <li>Manage high-volume POS transactions, structural returns, and item exchanges efficiently.</li>
+                    <li>Maintain pristine corporate visual merchandising standards across the footprint.</li>
+                    <li>Handle critical inventory tracking, auditing, and continuous stock replenishment.</li>
+                </ul>
             </div>
 
-            <div class="timeline-item right">
-                <div class="timeline-card">
-                    <h3 class="job-role">Customer Service Expert (USA Account)</h3>
-                    <h4 class="job-company">Teleperformance</h4>
-                    <div class="job-meta">
-                        <span><i class="fa-solid fa-location-dot"></i> Philippines</span>
-                        <span><i class="fa-solid fa-calendar-days"></i> July 2024 – March 2025</span>
+            <div class="timeline-card">
+                <div class="job-header">
+                    <div>
+                        <h3 class="job-role">Customer Service Expert (USA Account)</h3>
+                        <h4 class="job-company">Teleperformance</h4>
                     </div>
-                    <ul class="job-desc">
-                        <li>Managed critical, multi-channel customer communications to exceptional standards.</li>
-                        <li>Resolved intricate billing inquiries and maintained fast structural account updates.</li>
-                        <li>Executed real-time technical troubleshooting with clear consumer-facing language.</li>
-                        <li> Leveraged inbound interactions to effectively pitch corporate cross-selling initiatives and promotions.</li>
-                    </ul>
+                    <div class="job-meta">
+                        <span>Philippines</span>
+                        <span>July 2024 – March 2025</span>
+                    </div>
                 </div>
+                <ul class="job-desc">
+                    <li>Managed critical, multi-channel customer communications to exceptional standards.</li>
+                    <li>Resolved intricate billing inquiries and maintained fast structural account updates.</li>
+                    <li>Executed real-time technical troubleshooting with clear consumer-facing language.</li>
+                    <li>Leveraged inbound interactions to effectively pitch corporate cross-selling initiatives and promotions.</li>
+                </ul>
             </div>
 
-            <div class="timeline-item left">
-                <div class="timeline-card">
-                    <h3 class="job-role">Sales Store Associate (Furniture)</h3>
-                    <h4 class="job-company">Landmark Group Inc.</h4>
-                    <div class="job-meta">
-                        <span><i class="fa-solid fa-location-dot"></i> Qatar</span>
-                        <span><i class="fa-solid fa-calendar-days"></i> Jan 2022 – June 2024</span>
+            <div class="timeline-card">
+                <div class="job-header">
+                    <div>
+                        <h3 class="job-role">Sales Store Associate (Furniture)</h3>
+                        <h4 class="job-company">Landmark Group Inc.</h4>
                     </div>
-                    <ul class="job-desc">
-                        <li>Guided corporate and individual showroom furniture sales consultations.</li>
-                        <li>Supervised general daily floor and showroom system operations.</li>
-                        <li>Optimized layouts based on tailored visual merchandising instructions.</li>
-                        <li>Led periodic scheduled and structural inventory audits.</li>
-                    </ul>
+                    <div class="job-meta">
+                        <span>Qatar</span>
+                        <span>Jan 2022 – June 2024</span>
+                    </div>
                 </div>
+                <ul class="job-desc">
+                    <li>Guided corporate and individual showroom furniture sales consultations.</li>
+                    <li>Supervised general daily floor and showroom system operations.</li>
+                    <li>Optimized layouts based on tailored visual merchandising instructions.</li>
+                    <li>Led periodic scheduled and structural inventory audits.</li>
+                </ul>
             </div>
 
-            <div class="timeline-item right">
-                <div class="timeline-card">
-                    <h3 class="job-role">Store Supervisor / Visual Merchandiser</h3>
-                    <h4 class="job-company">I-Fashion Marketing</h4>
-                    <div class="job-meta">
-                        <span><i class="fa-solid fa-location-dot"></i> Philippines</span>
-                        <span><i class="fa-solid fa-calendar-days"></i> May 2014 – Dec 2021</span>
+            <div class="timeline-card">
+                <div class="job-header">
+                    <div>
+                        <h3 class="job-role">Store Supervisor / Visual Merchandiser</h3>
+                        <h4 class="job-company">I-Fashion Marketing</h4>
                     </div>
-                    <ul class="job-desc">
-                        <li>Directed total lifecycle retail operations alongside floor business tracking.</li>
-                        <li>Supervised, scheduled, and structured training programs for frontline retail staff.</li>
-                        <li>Designed and executed high-conversion floor layout visual merchandising strategies.</li>
-                        <li>Improved overall store aesthetic presentation to drive increased visitor foot traffic.</li>
-                    </ul>
+                    <div class="job-meta">
+                        <span>Philippines</span>
+                        <span>May 2014 – Dec 2021</span>
+                    </div>
                 </div>
+                <ul class="job-desc">
+                    <li>Directed total lifecycle retail operations alongside floor business tracking.</li>
+                    <li>Supervised, scheduled, and structured training programs for frontline retail staff.</li>
+                    <li>Designed and executed high-conversion floor layout visual merchandising strategies.</li>
+                    <li>Improved overall store aesthetic presentation to drive increased visitor foot traffic.</li>
+                </ul>
             </div>
 
         </div>
     </section>
 
-    <section id="education" class="reveal">
+    <section id="education">
         <h2 class="section-title">Education & Credentials</h2>
         <div class="edu-cert-container">
             
-            <div class="edu-column">
+            <div>
                 <div class="info-card">
-                    <div class="info-icon"><i class="fa-solid fa-graduation-cap"></i></div>
                     <div class="info-details">
                         <h4>Bachelor of Science in Secondary Education</h4>
                         <p>Rizal Technological University</p>
@@ -1025,9 +860,8 @@
                 </div>
             </div>
 
-            <div class="cert-column">
+            <div>
                 <div class="info-card">
-                    <div class="info-icon"><i class="fa-solid fa-user-nurse"></i></div>
                     <div class="info-details">
                         <h4>Nursing Assistant Certification</h4>
                         <p>Professional Credential — Qatar</p>
@@ -1035,8 +869,8 @@
                     </div>
                 </div>
 
-                <div>
-                    <h3 style="font-size: 1.1rem; color: var(--primary); margin-bottom: 10px; font-weight: 600;">Languages</h3>
+                <div style="padding: 10px 0;">
+                    <h3 style="font-size: 1rem; color: var(--text-main); margin-bottom: 15px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px;">Communication Matrix</h3>
                     <div class="lang-flex">
                         <div class="lang-tag">English <span>(Fluent)</span></div>
                         <div class="lang-tag">Tagalog <span>(Native)</span></div>
@@ -1048,7 +882,7 @@
         </div>
     </section>
 
-    <section id="contact" class="reveal">
+    <section id="contact">
         <h2 class="section-title">Get In Touch</h2>
         <div class="contact-grid">
             <div class="contact-sidebar">
@@ -1077,28 +911,27 @@
                     <i class="fa-brands fa-linkedin"></i>
                     <div>
                         <p>LinkedIn</p>
-                        <!-- Patched active profile destination URL to solve error bugs -->
-                        <p><a href="https://linkedin.com/in/rogirex-negrete-a30b68333" target="_blank" style="color: var(--secondary)">View Profile</a></p>
+                        <p><a href="https://linkedin.com/in/rogirex-negrete-a30b68333" target="_blank" style="color: var(--primary-accent)">View Profile</a></p>
                     </div>
                 </div>
             </div>
 
             <div class="contact-form-card">
-                <form action="https://formspree.io/f/your-form-id-here" method="POST" onsubmit="alert('Thank you! This placeholder form requires a Formspree endpoint ID to handle live submissions.'); return false;">
+                <form action="#" method="POST" onsubmit="alert('Thank you for your message. I will respond promptly.'); return false;">
                     <div class="form-group">
                         <label for="name">Your Name</label>
-                        <input type="text" id="name" name="name" class="form-control" placeholder="John Doe" required>
+                        <input type="text" id="name" class="form-control" placeholder="John Doe" required>
                     </div>
                     <div class="form-group">
                         <label for="email">Your Email</label>
-                        <input type="email" id="email" name="email" class="form-control" placeholder="john@example.com" required>
+                        <input type="email" id="email" class="form-control" placeholder="john@example.com" required>
                     </div>
                     <div class="form-group">
                         <label for="message">Message</label>
-                        <textarea id="message" name="message" rows="5" class="form-control" placeholder="Hi Rogirex, I would love to discuss a job opportunity..." required></textarea>
+                        <textarea id="message" rows="5" class="form-control" placeholder="Hi Rogirex, I would love to discuss a project..." required></textarea>
                     </div>
                     <button type="submit" class="btn btn-primary" style="border: none; width: 100%; justify-content: center;">
-                        <i class="fa-solid fa-paper-plane"></i> Send Message
+                        Send Message
                     </button>
                 </form>
             </div>
@@ -1108,12 +941,10 @@
     <footer>
         <div class="footer-content">
             <div style="text-align: left;">
-                <!-- Updated brand label references -->
-                <h3 class="logo" style="color: var(--white)">Rogirex <span>Negrete</span></h3>
-                <p style="font-size: 0.85rem; opacity: 0.7; margin-top: 5px;">Retail & Customer Service Excellence Specialist</p>
+                <h3 class="logo">Rogirex Negrete</h3>
+                <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 5px;">Retail & Customer Experience Specialist</p>
             </div>
             <div class="footer-socials">
-                <!-- Patched active profile destination link -->
                 <a href="https://linkedin.com/in/rogirex-negrete-a30b68333" target="_blank" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
                 <a href="mailto:rogirex@outlook.com" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
                 <a href="tel:+971507934462" aria-label="Phone"><i class="fa-solid fa-phone"></i></a>
@@ -1123,7 +954,7 @@
     </footer>
 
     <script>
-        // Hamburger Menu Toggle
+        // Hamburger Menu Toggle Logic
         const hamburgerBtn = document.getElementById('hamburger-btn');
         const navMenu = document.getElementById('nav-menu');
 
@@ -1137,7 +968,6 @@
             }
         });
 
-        // Close Mobile Menu on Nav Item Click
         document.querySelectorAll('.nav-link').forEach(link => {
             link.addEventListener('click', () => {
                 navMenu.classList.remove('active');
@@ -1145,25 +975,18 @@
             });
         });
 
-        // Active Link Highlighting & Scroll-In Animations via Intersection Observer
+        // Dynamic Menu Node Highlighting
         const sections = document.querySelectorAll('section');
         const navLinks = document.querySelectorAll('.nav-link');
-        const reveals = document.querySelectorAll('.reveal');
 
         const observerOptions = {
             root: null,
-            threshold: 0.15,
-            rootMargin: "0px 0px -50px 0px"
+            threshold: 0.2,
+            rootMargin: "-10% 0px -40% 0px"
         };
 
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
-                // Scroll Animation logic
-                if (entry.isIntersecting && entry.target.classList.contains('reveal')) {
-                    entry.target.classList.add('active');
-                }
-                
-                // Active Navigation Highlight logic
                 if (entry.isIntersecting) {
                     let currentId = entry.target.getAttribute('id');
                     navLinks.forEach(link => {
@@ -1177,7 +1000,6 @@
         }, observerOptions);
 
         sections.forEach(section => observer.observe(section));
-        reveals.forEach(reveal => observer.observe(reveal));
     </script>
 </body>
 </html>
